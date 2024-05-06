@@ -1,10 +1,7 @@
 package com.example.snakegame.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -15,6 +12,7 @@ import java.io.Serializable;
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class User implements Serializable {
 
     @Id
@@ -29,4 +27,12 @@ public class User implements Serializable {
 
     private long rating;
 
+
+
+    public User(String login, String email, String password, long rating) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
+        this.rating = rating;
+    }
 }
