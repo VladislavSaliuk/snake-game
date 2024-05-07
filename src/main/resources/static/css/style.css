@@ -1,91 +1,74 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Orbitron:wght@400..900&display=swap');
 
-*{
-    margin: 0;
+* {
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
-    font-family: 'Josefin Sans', sans-serif;
 }
 
-body{
-    background: #3aaf9f;
+body {
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.wrapper{
-    max-width: 350px;
+form {
     width: 100%;
-    height: auto;
-    background: #fff;
-    padding: 30px 45px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    max-width: 370px;
+    background-color: white;
+    padding: 65px;
     border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.wrapper .title{
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 26px;
-    font-weight: bold;
-    color: #3aaf9f;
+.form-control{
+    border-color: black;
 }
 
-.wrapper .form .input_field{
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.create-account {
-    position: relative;
-    text-align: center;
-    margin-top: 40px;
-}
-
-.wrapper .form .input_field .input{
+.btn-primary {
     width: 100%;
-    padding: 12px;
-    padding-left: 30px;
     border: none;
-    background: #eeeeee;
+    background: rgba(131,58,180,1);
+    transition-duration: 1s;
 }
 
-.wrapper .form .btn{
-    width: 70%;
-    margin: 20px auto 0;
-    background: #3aaf9f;
-    text-align: center;
-    padding: 12px;
-    border-radius: 25px;
-    cursor: pointer;
-    user-select: none;
+.btn:hover {
+    background: rgba(253,29,29,1);
 }
 
-.wrapper .form .btn a{
-    color: #fff;
-}
-
-.wrapper .form .btn:hover {
-    background: #48c9b0;
-}
-
-.wrapper .form .input_field i{
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.form-label {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
     font-size: 14px;
-    color: #1d2120;
 }
 
-::-webkit-input-placeholder {
-    color: #1d2120;
+h4 {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 2rem !important;
+    text-shadow: 0 2px 4px rgb(202, 127, 255);
 }
-::-moz-placeholder {
-    color: #1d2120;
+
+a {
+    display: block;
+    font-family: "Arial", sans-serif;
+    text-align: left;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
 }
-:-ms-input-placeholder {
-    color: #1d2120;
+
+@media only screen and (max-width: 600px) {
+
+    form {
+        width: 100%;
+    }
 }
