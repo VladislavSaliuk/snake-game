@@ -38,7 +38,7 @@ public class UserController {
         User authenticatedUser = userService.authenticateUser(user.getLogin(),user.getPassword());
         if(authenticatedUser != null){
             model.addAttribute("login", authenticatedUser.getLogin());
-            return "personal_page";
+            return "game_page";
         } else {
             return "error_page";
         }
