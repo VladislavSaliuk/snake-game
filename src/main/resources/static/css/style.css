@@ -7,63 +7,80 @@
 }
 
 body {
-    background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background: #414141;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-form {
+#home-form {
     width: 100%;
-    max-width: 370px;
-    background-color: white;
+    max-width: 340px;
+    background-color: #c4cfa3;
     padding: 65px;
+}
+
+.home-border-1 {
+    border: #595f43 solid 10px;
+    border-radius: 30px;
+    box-shadow: inset 0 0 0 10px #595f43;
+}
+
+.home-border-2 {
+    border: #abb78a solid 8px;
+    border-radius: 26px;
+    box-shadow: inset 0 0 0 10px #abb78a;
+}
+
+.home-border-3 {
+    border: #8b966c solid 30px;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 0 5px #8b966c;
 }
 
 .form-control{
     border-color: black;
+    border-radius: 5px;
 }
 
 .btn-primary {
     width: 100%;
+    font-family: "VT323", monospace;
+    font-size: 20px;
     border: none;
-    background: rgba(131,58,180,1);
-    transition-duration: 1s;
+    background: #595f43;
+    border-radius: 5px;
 }
 
 .btn:hover {
-    background: rgba(253,29,29,1);
+    background: #414141;
 }
 
 .form-label {
-    font-family: "Orbitron", sans-serif;
+    font-family: "VT323", monospace;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 h4 {
-    font-family: "Orbitron", sans-serif;
+    font-family: "VT323", monospace;
     font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal;
-    font-size: 2rem !important;
-    text-shadow: 0 2px 4px rgb(202, 127, 255);
+    font-size: 3rem !important;
 }
 
 a {
     display: block;
-    font-family: "Arial", sans-serif;
+    font-family: "VT323", monospace;
     text-align: left;
     margin-top: 10px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 600px) {
