@@ -16,23 +16,23 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
+    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(unique = true, nullable = false)
     private String login;
 
-    private String email;
-
+    @Column(nullable = false)
     private String password;
 
-    private long rating;
+    @Column(nullable = false)
+    private long record;
 
 
-
-    public User(String login, String email, String password, long rating) {
+    public User(String login, String password, long record) {
         this.login = login;
-        this.email = email;
         this.password = password;
-        this.rating = rating;
+        this.record = record;
     }
 }

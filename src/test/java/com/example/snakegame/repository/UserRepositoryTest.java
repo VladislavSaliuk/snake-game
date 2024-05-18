@@ -20,7 +20,7 @@ public class UserRepositoryTest {
     @Test
     @Sql(scripts = {"/sql/drop_data.sql", "/sql/insert_data.sql"})
     void save_shouldInsertUserToDataBase_whenInputContainsUser(){
-        User user = new User("Test login", "Test email", "Test password" ,0);
+        User user = new User("Test login",  "Test password" ,0);
         userRepository.save(user);
         assertEquals(11,userRepository.count());
     }
@@ -28,40 +28,24 @@ public class UserRepositoryTest {
     @Test
     @Sql(scripts = {"/sql/drop_data.sql", "/sql/insert_data.sql"})
     void save_shouldThrowDataIntegrityViolationException_whenDublicatesLogin(){
-        User user1 = new User("Test login 1", "Test email 1", "Test password" ,0);
-        User user2 = new User("Test login 1", "Test email 2", "Test password" ,0);
+        User user1 = new User("Test login 1", "Test password" ,0);
+        User user2 = new User("Test login 1",  "Test password" ,0);
         userRepository.save(user1);
         DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(user2));
     }
-
-    @Test
-    @Sql(scripts = {"/sql/drop_data.sql", "/sql/insert_data.sql"})
-    void save_shouldThrowDataIntegrityViolationException_whenDublicatesEmail(){
-        User user1 = new User("Test login 1", "Test email 1", "Test password" ,0);
-        User user2 = new User("Test login 2", "Test email 1", "Test password" ,0);
-        userRepository.save(user1);
-        DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(user2));
-    }
-
 
     @Test
     @Sql(scripts = {"/sql/drop_data.sql", "/sql/insert_data.sql"})
     void save_shouldThrowDataIntegrityViolationException_whenInputContainsUserWithOutLogin(){
-        User user = new User(null, "Test email", "Test password" ,0);
+        User user = new User(null,  "Test password" ,0);
         DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(user));
     }
 
-    @Test
-    @Sql(scripts = {"/sql/drop_data.sql", "/sql/insert_data.sql"})
-    void save_shouldThrowDataIntegrityViolationException_whenInputContainsUserWithOutEmail(){
-        User user = new User("Test login", null, "Test password" ,0);
-        DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(user));
-    }
 
     @Test
     @Sql(scripts = {"/sql/drop_data.sql", "/sql/insert_data.sql"})
     void save_shouldThrowDataIntegrityViolationException_whenInputContainsUserWithOutPassword(){
-        User user = new User("Test login", "Test email", null ,0);
+        User user = new User("Test login",  null ,0);
         DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(user));
     }
 
@@ -72,7 +56,7 @@ public class UserRepositoryTest {
     void findByLoginAndPassword_shouldReturnCorrectUser_whenInputContainsExistingLoginAndPassword(){
         String login = "john_doe";
         String password = "password123";
-        User expectedUser = new User(1, "john_doe","john_doe@example.com", "password123",0);
+        User expectedUser = new User(1, "john_doe", "password123",0);
         User actualUser = userRepository.findByLoginAndPassword(login,password);
         assertTrue(expectedUser.equals(actualUser));
     }

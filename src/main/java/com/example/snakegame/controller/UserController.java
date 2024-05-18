@@ -29,13 +29,13 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute User user){
-        User registeredUser = userService.registerUser(user.getLogin(), user.getEmail(), user.getPassword());
+        User registeredUser = userService.registerUser(user.getLogin() , user.getPassword());
         return registeredUser == null ? "error_page" : "redirect:/login";
     }
 
     @PostMapping("/login")
     public String login(@ModelAttribute User user, Model model){
-        User authenticatedUser = userService.authenticateUser(user.getLogin(),user.getPassword());
+        User authenticatedUser = userService.authenticateUser(user.getLogin(), user.getPassword());
         if(authenticatedUser != null){
             model.addAttribute("login", authenticatedUser.getLogin());
             return "game_page";
@@ -43,5 +43,6 @@ public class UserController {
             return "error_page";
         }
     }
+
 
 }

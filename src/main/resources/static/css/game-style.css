@@ -68,7 +68,19 @@ body,
 
 #highScore {
     color: #d8bbca;
-    display: none;
+    display: block;
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+
+span {
+    color: #abb78a;
+    display: block;
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 10px 0;
+    text-transform: uppercase;
 }
 
 .game-border-3, #logo {

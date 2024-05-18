@@ -24,36 +24,30 @@ public class UserServiceTest {
     UserService userService;
     @Test
     void registerUser_shouldInsertUserToDataBase_whenInputContainsCorrectData(){
-        User user = new User("Test login", "Test email", "Test password", 0);
-        userService.registerUser(user.getLogin(), user.getEmail(), user.getPassword());
+        User user = new User("Test login",  "Test password", 0);
+        userService.registerUser(user.getLogin(),  user.getPassword());
         verify(userRepository).save(user);
     }
 
     @Test
-    void registerUser_shouldRetrunNull_whenInputContainsLoginAsNull(){
-        User user = new User(null, "Test email", "Test password", 0);
-        userService.registerUser(user.getLogin(), user.getEmail(), user.getPassword());
+    void registerUser_shouldReturnNull_whenInputContainsLoginAsNull(){
+        User user = new User(null, "Test password", 0);
+        userService.registerUser(user.getLogin(),  user.getPassword());
         verify(userRepository, never()).save(user);
     }
 
-    @Test
-    void registerUser_shouldRetrunNull_whenInputContainsEmailAsNull(){
-        User user = new User("Test login", null, "Test password", 0);
-        userService.registerUser(user.getLogin(), user.getEmail(), user.getPassword());
-        verify(userRepository, never()).save(user);
-    }
 
     @Test
-    void registerUser_shouldRetrunNull_whenInputContainsPasswordAsNull(){
-        User user = new User("Test login", "Test email", null, 0);
-        userService.registerUser(user.getLogin(), user.getEmail(), user.getPassword());
+    void registerUser_shouldReturnNull_whenInputContainsPasswordAsNull(){
+        User user = new User("Test login",  null, 0);
+        userService.registerUser(user.getLogin(), user.getPassword());
         verify(userRepository, never()).save(user);
     }
     @Test
     void authenticateUser_shouldFetchCorrectUserFromDatabase_whenInputContainsCorrectData(){
         String login = "Test login";
         String password = "Test password";
-        User expectedUser = new User("Test login", "Test email", "Test password", 0);
+        User expectedUser = new User("Test login",  "Test password", 0);
         when(userRepository.findByLoginAndPassword(login ,password)).thenReturn(expectedUser);
         User actualUser = userService.authenticateUser(login, password);
         assertTrue(expectedUser.equals(actualUser));
@@ -61,7 +55,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void authenticateUser_shouldRetrunNull_whenInputContainsLoginAsNull(){
+    void authenticateUser_shouldReturnNull_whenInputContainsLoginAsNull(){
         String login = null;
         String password = "Test password";
         when(userRepository.findByLoginAndPassword(login ,password)).thenReturn(null);
@@ -71,7 +65,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void authenticateUser_shouldRetrunNull_whenInputContainsPasswordAsNull(){
+    void authenticateUser_shouldReturnNull_whenInputContainsPasswordAsNull(){
         String login = "Test login";
         String password = null;
         when(userRepository.findByLoginAndPassword(login ,password)).thenReturn(null);

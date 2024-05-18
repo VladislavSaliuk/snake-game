@@ -14,15 +14,14 @@ public class UserService {
     private UserRepository userRepository;
 
 
-    public User registerUser(String login, String email, String password) {
-        if (login == null || email == null || password == null) {
+    public User registerUser(String login, String password) {
+        if (login == null  || password == null) {
             return null;
         } else {
             User user = new User();
             user.setLogin(login);
-            user.setEmail(email);
             user.setPassword(password);
-            user.setRating(0);
+            user.setRecord(0);
             userRepository.save(user);
             return user;
         }
