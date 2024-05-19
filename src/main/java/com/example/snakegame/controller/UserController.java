@@ -38,11 +38,13 @@ public class UserController {
         User authenticatedUser = userService.authenticateUser(user.getLogin(), user.getPassword());
         if(authenticatedUser != null){
             model.addAttribute("login", authenticatedUser.getLogin());
+            model.addAttribute("record", authenticatedUser.getRecord());
             return "game_page";
         } else {
             return "error_page";
         }
     }
+
 
 
 }

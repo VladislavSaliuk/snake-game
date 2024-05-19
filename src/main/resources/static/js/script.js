@@ -100,12 +100,6 @@ function move() {
     }
 }
 
-// Test moving
-// setInterval(() => {
-//   move(); // Move first
-//   draw(); // Then draw again new position
-// }, 200);
-
 // Start game function
 function startGame() {
     gameStarted = true; // Keep track of a running game
@@ -184,7 +178,7 @@ function resetGame() {
 
 function updateScore() {
     const currentScore = snake.length - 1;
-    score.textContent = currentScore.toString().padStart(3, '0');
+    score.textContent = currentScore.toString();
 }
 
 function stopGame() {
@@ -194,11 +188,18 @@ function stopGame() {
     logo.style.display = 'block';
 }
 
+let highScoreInitialized = false; // Додано змінну для відстеження, чи ініціалізовано highScore
+
 function updateHighScore() {
     const currentScore = snake.length - 1;
     if (currentScore > highScore) {
         highScore = currentScore;
-        highScoreText.textContent = highScore.toString().padStart(3, '0');
+        if (!highScoreInitialized) {
+            highScoreText.textContent = highScore.toString();
+            highScoreInitialized = true;
+        } else {
+            highScoreText.textContent = highScore.toString();
+        }
+        highScoreText.style.display = 'block'; // Забезпечити, що блок з highScore відображатиметься тільки при покращенні рекорду
     }
-    highScoreText.style.display = 'block';
 }

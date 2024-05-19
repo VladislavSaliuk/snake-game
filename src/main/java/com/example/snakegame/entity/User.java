@@ -2,9 +2,7 @@ package com.example.snakegame.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.io.Serializable;
-
 
 @Entity
 @Getter
