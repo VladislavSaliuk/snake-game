@@ -5,9 +5,7 @@ import com.example.snakegame.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -45,6 +43,12 @@ public class UserController {
         }
     }
 
+    @PostMapping("/updateRecord")
+    @ResponseBody
+    public String updateRecord(@RequestParam String login, @RequestParam long newRecord) {
+        userService.updateRecord(login, newRecord);
+        return "Record updated";
+    }
 
 
 }

@@ -45,9 +45,6 @@ function setPosition(element, position) {
     element.style.gridRow = position.y;
 }
 
-// Testing draw function
-// draw();
-
 // Draw food function
 function drawFood() {
     if (gameStarted) {
@@ -83,8 +80,6 @@ function move() {
     }
 
     snake.unshift(head);
-
-    //   snake.pop();
 
     if (head.x === food.x && head.y === food.y) {
         food = generateFood();
@@ -140,7 +135,6 @@ function handleKeyPress(event) {
 document.addEventListener('keydown', handleKeyPress);
 
 function increaseSpeed() {
-    //   console.log(gameSpeedDelay);
     if (gameSpeedDelay > 150) {
         gameSpeedDelay -= 5;
     } else if (gameSpeedDelay > 100) {
@@ -188,18 +182,39 @@ function stopGame() {
     logo.style.display = 'block';
 }
 
-let highScoreInitialized = false; // Додано змінну для відстеження, чи ініціалізовано highScore
+// New functions for updating the record
+
+async function updateRecord(username, record) {
+    try {
+        const response = await fetch('/updateRecord', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `login=${username}&newRecord=${record}`,
+        });
+
+        if (response.ok) {
+            console.log('Record updated successfully:', username, record);
+        } else {
+            console.error('Failed to update record:', response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error('Error updating record:', error);
+    }
+}
 
 function updateHighScore() {
     const currentScore = snake.length - 1;
     if (currentScore > highScore) {
         highScore = currentScore;
-        if (!highScoreInitialized) {
-            highScoreText.textContent = highScore.toString();
-            highScoreInitialized = true;
-        } else {
-            highScoreText.textContent = highScore.toString();
-        }
-        highScoreText.style.display = 'block'; // Забезпечити, що блок з highScore відображатиметься тільки при покращенні рекорду
+        highScoreText.textContent = highScore.toString();
+        highScoreText.style.display = 'block';
+
+        // Виклик API для оновлення рекорду
+        const username = document.getElementById('username').textContent
+        console.log('Updating record for user:', username, 'with score:', highScore);
+        updateRecord(username, highScore);
     }
 }
+

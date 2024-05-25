@@ -44,5 +44,21 @@ public class UserService {
         return null;
     }
 
+    public void updateRecord(String login, long newRecord) {
+        User user = userRepository.findByLogin(login);
+        if (user != null) {
+            if (newRecord > user.getRecord()) {
+                user.setRecord(newRecord);
+                userRepository.save(user);
+                System.out.println("Record updated successfully for user: " + login);
+            } else {
+                System.out.println("New record is not higher than current record for user: " + login);
+            }
+        } else {
+            System.out.println("User not found with login: " + login);
+        }
+    }
+
+
 
 }
