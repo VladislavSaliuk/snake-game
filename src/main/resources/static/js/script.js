@@ -218,3 +218,41 @@ function updateHighScore() {
     }
 }
 
+function handleTouchStart(event) {
+    const touch = event.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+}
+
+function handleTouchMove(event) {
+    if (!touchStartX || !touchStartY) {
+        return;
+    }
+
+    const touch = event.touches[0];
+    const touchEndX = touch.clientX;
+    const touchEndY = touch.clientY;
+
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+            direction = 'right';
+        } else {
+            direction = 'left';
+        }
+    } else {
+        if (diffY > 0) {
+            direction = 'down';
+        } else {
+            direction = 'up';
+        }
+    }
+
+    touchStartX = null;
+    touchStartY = null;
+}
+
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
