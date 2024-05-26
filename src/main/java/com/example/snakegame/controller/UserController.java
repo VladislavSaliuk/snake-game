@@ -1,6 +1,6 @@
 package com.example.snakegame.controller;
 
-import com.example.snakegame.entity.User;
+import com.example.snakegame.model.User;
 import com.example.snakegame.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

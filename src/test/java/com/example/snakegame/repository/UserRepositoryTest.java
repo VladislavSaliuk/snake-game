@@ -1,6 +1,6 @@
 package com.example.snakegame.repository;
 
-import com.example.snakegame.entity.User;
+import com.example.snakegame.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -41,14 +41,12 @@ public class UserRepositoryTest {
         DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(user));
     }
 
-
     @Test
     @Sql(scripts = {"/sql/drop_data.sql", "/sql/insert_data.sql"})
     void save_shouldThrowDataIntegrityViolationException_whenInputContainsUserWithOutPassword(){
         User user = new User("Test login",  null ,0);
         DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(user));
     }
-
 
 
     @Test

@@ -1,4 +1,4 @@
-package com.example.snakegame.entity;
+package com.example.snakegame.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,7 +26,6 @@ public class User implements Serializable {
 
     @Column(nullable = false)
     private long record;
-
 
     public User(String login, String password, long record) {
         this.login = login;

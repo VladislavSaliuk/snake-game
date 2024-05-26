@@ -1,6 +1,6 @@
 package com.example.snakegame.service;
 
-import com.example.snakegame.entity.User;
+import com.example.snakegame.model.User;
 import com.example.snakegame.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,13 @@ public class UserService {
     }
 
     public void updateRecord(String login, long newRecord) {
+
+        if(login == null) {
+            throw new IllegalArgumentException("Login is null!");
+        }
+
         User user = userRepository.findByLogin(login);
+
         if (user != null) {
             if (newRecord > user.getRecord()) {
                 user.setRecord(newRecord);
