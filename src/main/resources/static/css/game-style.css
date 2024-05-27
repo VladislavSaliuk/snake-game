@@ -13,10 +13,10 @@ body,
 }
 
 #game-board {
-    border-radius: 10px;
+    border-radius: 100px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15px, 1fr)); /* Змінено */
-    grid-template-rows: repeat(auto-fill, minmax(15px, 1fr)); /* Змінено */
+    grid-template-columns: repeat(20, 20px);
+    grid-template-rows: repeat(20, 20px);
     margin: 5px;
 }
 
@@ -98,20 +98,4 @@ span {
 
 #logo {
     position:  absolute;
-}
-
-@media (max-width: 600px) {
-    #instruction-text {
-        top: 70%;
-        width: 80%;
-    }
-
-    #score,
-    #highScore {
-        font-size: 30px;
-    }
-
-    span {
-        font-size: 18px;
-    }
 }
